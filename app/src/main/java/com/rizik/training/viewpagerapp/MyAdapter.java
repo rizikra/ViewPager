@@ -30,25 +30,12 @@ public class MyAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
+        String text = myData.get(position);
 
-        FragmentSatu fragmentSatu = new FragmentSatu();
-        FragmentDua fragmentDua = new FragmentDua();
+      //  FragmentSatu fragmentSatu = new FragmentSatu();
 
-        Fragment item = null;
-
-        switch (position) {
-            case 0:
-                item = fragmentSatu;
-                break;
-            case 1:
-                item = fragmentDua;
-                break;
-            default:
-                item = fragmentSatu;
-                break;
-
-        }
-        return item;
+        FragmentSatu fragmentSatu = FragmentSatu.newInstance(text);
+        return fragmentSatu;
     }
 
     @Override
