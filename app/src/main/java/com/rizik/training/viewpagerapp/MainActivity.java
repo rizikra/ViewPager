@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> menuTitleData = new ArrayList<>();
     ArrayList<String> data = new ArrayList<>();
 
+    ArrayList<MenuMakanan> kumpulanMenu = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,11 +28,13 @@ public class MainActivity extends AppCompatActivity {
 
         generateTitle();
         generateData();
+        generateMenu();
 
         //Panggil viewPager yang ada di activity_main ke Main Activity
         viewPager = findViewById(R.id.viewPager);
         //myAdapter = new MyAdapter(getSupportFragmentManager());
-        myAdapter = MyAdapter.newInstance(getSupportFragmentManager(), menuTitleData, data);
+        //myAdapter = MyAdapter.newInstance(getSupportFragmentManager(), menuTitleData, data);
+        myAdapter = MyAdapter.newInstance(getSupportFragmentManager(), kumpulanMenu);
         viewPager.setAdapter(myAdapter);
 
         //Tambahkan TabLayout
@@ -48,6 +52,13 @@ public class MainActivity extends AppCompatActivity {
         data.add("Data 1");
         data.add("Data 2");
         data.add("Data 3");
+    }
+
+    public void generateMenu(){
+        MenuMakanan menu1 = new MenuMakanan("T dot", "Data 1");
+        kumpulanMenu.add(menu1);
+        kumpulanMenu.add(new MenuMakanan("Techpolitan", "Data 2"));
+        kumpulanMenu.add(new MenuMakanan("DEFAULT", "Data 3"));
     }
 
 }

@@ -13,6 +13,8 @@ public class MyAdapter extends FragmentStatePagerAdapter {
     private static ArrayList<String> myTitles;
     private static ArrayList<String> myData;
 
+    private static ArrayList<MenuMakanan> myMenu;
+
     private static int numOfItem;
 
     public static MyAdapter newInstance (FragmentManager fragmentManager, ArrayList<String> titles, ArrayList<String> data){
@@ -22,6 +24,15 @@ public class MyAdapter extends FragmentStatePagerAdapter {
         numOfItem = data.size();
         return myAdapter;
     }
+    //Overload newInstance() above
+    public static MyAdapter newInstance (FragmentManager fragmentManager, ArrayList<MenuMakanan> kumpulanMenu){
+        MyAdapter myAdapter = new MyAdapter(fragmentManager);
+        myMenu = kumpulanMenu;
+        numOfItem = kumpulanMenu.size();
+        return myAdapter;
+
+
+    }
     //Constractor
     public MyAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
@@ -30,11 +41,11 @@ public class MyAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        String text = myData.get(position);
+        String text = myMenu.get(position).getData();
 
       //  FragmentSatu fragmentSatu = new FragmentSatu();
-
         FragmentSatu fragmentSatu = FragmentSatu.newInstance(text);
+
         return fragmentSatu;
     }
 
@@ -46,7 +57,13 @@ public class MyAdapter extends FragmentStatePagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        String title = myTitles.get(position);
+        String title = "";
+        try{
+            title = myMenu.get(position).getNamaMenu(); //object MenuMakanan menu.getNamaMenu();
+        }
+        catch (IndexOutOfBoundsException e){
+            title = "Apa Saja";
+        }
         return title;
     }
 }
