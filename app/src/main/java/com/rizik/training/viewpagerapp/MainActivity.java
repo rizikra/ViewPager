@@ -26,15 +26,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        generateTitle();
-        generateData();
+       // generateTitle();
+        //generateData();
         generateMenu();
 
         //Panggil viewPager yang ada di activity_main ke Main Activity
         viewPager = findViewById(R.id.viewPager);
-        //myAdapter = new MyAdapter(getSupportFragmentManager());
+        myAdapter = new MyAdapter(getSupportFragmentManager());
         //myAdapter = MyAdapter.newInstance(getSupportFragmentManager(), menuTitleData, data);
-        myAdapter = MyAdapter.newInstance(getSupportFragmentManager(), kumpulanMenu);
+        //myAdapter = MyAdapter.newInstance(getSupportFragmentManager(), kumpulanMenu, getApplicationContext());
         viewPager.setAdapter(myAdapter);
 
         //Tambahkan TabLayout
@@ -54,11 +54,25 @@ public class MainActivity extends AppCompatActivity {
         data.add("Data 3");
     }
 
-    public void generateMenu(){
-        MenuMakanan menu1 = new MenuMakanan("T dot", "Data 1");
-        kumpulanMenu.add(menu1);
-        kumpulanMenu.add(new MenuMakanan("Techpolitan", "Data 2"));
-        kumpulanMenu.add(new MenuMakanan("DEFAULT", "Data 3"));
-    }
+    public void generateMenu() {
+        ArrayList<Makanan> menuAyam = new ArrayList<>();
+        menuAyam.add(new Makanan("Ayam Goreng", "10000"));
+        menuAyam.add(new Makanan("Ayam Bakar", "15000"));
+        menuAyam.add(new Makanan("Ayam Betutu", "20000"));
 
+        kumpulanMenu.add(0,new MenuMakanan("Ayam", menuAyam));
+        ArrayList<Makanan> menuMie = new ArrayList<>();
+        menuMie.add(new Makanan("Mie Goreng", "10000"));
+        menuMie.add(new Makanan("Mie Soto", "15000"));
+        menuMie.add(new Makanan("Mie Rendang", "20000"));
+
+        kumpulanMenu.add(1,new MenuMakanan("Mie", menuMie));
+
+        ArrayList<Makanan> menuPaket = new ArrayList<>();
+        menuMie.add(new Makanan("Pahe", "10000"));
+        menuMie.add(new Makanan("Pale", "15000"));
+        menuMie.add(new Makanan("Pak De", "20000"));
+
+        kumpulanMenu.add(2,new MenuMakanan("Paket", menuPaket));
+    }
 }

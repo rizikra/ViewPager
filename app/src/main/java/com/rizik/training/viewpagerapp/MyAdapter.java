@@ -1,5 +1,8 @@
 package com.rizik.training.viewpagerapp;
 
+import android.content.Context;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
@@ -13,9 +16,10 @@ public class MyAdapter extends FragmentStatePagerAdapter {
     private static ArrayList<String> myTitles;
     private static ArrayList<String> myData;
 
-    private static ArrayList<MenuMakanan> myMenu;
+    private static ArrayList<MenuMakanan> myMenu = new ArrayList<>();
 
-    private static int numOfItem;
+    private static int numOfItem =0;
+    private static Context ctx;
 
     public static MyAdapter newInstance (FragmentManager fragmentManager, ArrayList<String> titles, ArrayList<String> data){
         MyAdapter myAdapter = new MyAdapter(fragmentManager);
@@ -25,10 +29,11 @@ public class MyAdapter extends FragmentStatePagerAdapter {
         return myAdapter;
     }
     //Overload newInstance() above
-    public static MyAdapter newInstance (FragmentManager fragmentManager, ArrayList<MenuMakanan> kumpulanMenu){
+    public static MyAdapter newInstance (FragmentManager fragmentManager, ArrayList<MenuMakanan> kumpulanMenu, Context context){
         MyAdapter myAdapter = new MyAdapter(fragmentManager);
         myMenu = kumpulanMenu;
         numOfItem = kumpulanMenu.size();
+        ctx = context;
         return myAdapter;
 
 
@@ -41,12 +46,12 @@ public class MyAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        String text = myMenu.get(position).getData();
-
+        ArrayList<Makanan> makanan = myMenu.get(position).getData();
+                FragmentDua fragment = new FragmentDua();
+                Toast.makeText(ctx, String.valueOf(myMenu.get(position).getNamaMenu()),Toast.LENGTH_SHORT).show();
       //  FragmentSatu fragmentSatu = new FragmentSatu();
-        FragmentSatu fragmentSatu = FragmentSatu.newInstance(text);
 
-        return fragmentSatu;
+        return fragment;
     }
 
     @Override
