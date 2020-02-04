@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         myAdapter = new MyAdapter(getSupportFragmentManager());
         //myAdapter = MyAdapter.newInstance(getSupportFragmentManager(), menuTitleData, data);
-        //myAdapter = MyAdapter.newInstance(getSupportFragmentManager(), kumpulanMenu, getApplicationContext());
+        myAdapter = MyAdapter.newInstance(getSupportFragmentManager(), kumpulanMenu, getApplicationContext());
         viewPager.setAdapter(myAdapter);
 
         //Tambahkan TabLayout
@@ -59,20 +59,18 @@ public class MainActivity extends AppCompatActivity {
         menuAyam.add(new Makanan("Ayam Goreng", "10000"));
         menuAyam.add(new Makanan("Ayam Bakar", "15000"));
         menuAyam.add(new Makanan("Ayam Betutu", "20000"));
+        kumpulanMenu.add(new MenuMakanan("Ayam", menuAyam));
 
-        kumpulanMenu.add(0,new MenuMakanan("Ayam", menuAyam));
         ArrayList<Makanan> menuMie = new ArrayList<>();
         menuMie.add(new Makanan("Mie Goreng", "10000"));
         menuMie.add(new Makanan("Mie Soto", "15000"));
         menuMie.add(new Makanan("Mie Rendang", "20000"));
-
-        kumpulanMenu.add(1,new MenuMakanan("Mie", menuMie));
+        kumpulanMenu.add(new MenuMakanan("Mie", menuMie));
 
         ArrayList<Makanan> menuPaket = new ArrayList<>();
-        menuMie.add(new Makanan("Pahe", "10000"));
-        menuMie.add(new Makanan("Pale", "15000"));
-        menuMie.add(new Makanan("Pak De", "20000"));
-
-        kumpulanMenu.add(2,new MenuMakanan("Paket", menuPaket));
+        menuPaket.add(new Makanan("Pahe", "10000"));
+        menuPaket.add(new Makanan("Pale", "15000"));
+        menuPaket.add(new Makanan("Pak De", "20000"));
+        kumpulanMenu.add(new MenuMakanan("Paket", menuPaket));
     }
 }

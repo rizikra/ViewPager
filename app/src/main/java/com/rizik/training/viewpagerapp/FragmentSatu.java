@@ -22,16 +22,20 @@ import java.util.ArrayList;
  */
 public class FragmentSatu extends Fragment {
 
-    private static ArrayList<Makanan> foods;
-    public static FragmentSatu newInstance (ArrayList<Makanan> text){
-        FragmentSatu fragmentSatu = new FragmentSatu();
+    private ArrayList<Makanan> foods;
 
-        foods = text;
-//        Bundle args = new Bundle();
-//        args.putString("text", String.valueOf(text));
-//        fragmentSatu.setArguments(args);
-        return fragmentSatu;
+    public  void setData (ArrayList<Makanan>food){
+        this.foods=food;
     }
+//    public static FragmentSatu newInstance (ArrayList<Makanan> text){
+//        FragmentSatu fragmentSatu = new FragmentSatu();
+//
+//        foods = text;
+////        Bundle args = new Bundle();
+////        args.putString("text", String.valueOf(text));
+////        fragmentSatu.setArguments(args);
+//        return fragmentSatu;
+//    }
     public FragmentSatu() {
         // Required empty public constructor
     }

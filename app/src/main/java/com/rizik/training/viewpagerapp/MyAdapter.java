@@ -18,7 +18,7 @@ public class MyAdapter extends FragmentStatePagerAdapter {
 
     private static ArrayList<MenuMakanan> myMenu = new ArrayList<>();
 
-    private static int numOfItem =0;
+    private static int numOfItem ;
     private static Context ctx;
 
     public static MyAdapter newInstance (FragmentManager fragmentManager, ArrayList<String> titles, ArrayList<String> data){
@@ -32,7 +32,7 @@ public class MyAdapter extends FragmentStatePagerAdapter {
     public static MyAdapter newInstance (FragmentManager fragmentManager, ArrayList<MenuMakanan> kumpulanMenu, Context context){
         MyAdapter myAdapter = new MyAdapter(fragmentManager);
         myMenu = kumpulanMenu;
-        numOfItem = kumpulanMenu.size();
+        numOfItem = myMenu.size();
         ctx = context;
         return myAdapter;
 
@@ -47,8 +47,9 @@ public class MyAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         ArrayList<Makanan> makanan = myMenu.get(position).getData();
-                FragmentDua fragment = new FragmentDua();
-                Toast.makeText(ctx, String.valueOf(myMenu.get(position).getNamaMenu()),Toast.LENGTH_SHORT).show();
+        FragmentSatu fragment = new FragmentSatu();
+        fragment.setData(makanan);
+      //          Toast.makeText(ctx, String.valueOf(myMenu.get(position).getNamaMenu()),Toast.LENGTH_SHORT).show();
       //  FragmentSatu fragmentSatu = new FragmentSatu();
 
         return fragment;
