@@ -1,6 +1,7 @@
 package com.rizik.training.viewpagerapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -41,6 +42,7 @@ public class FragmentSatu extends Fragment {
     }
 
     private ListView listData;
+    private UserAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,10 +51,22 @@ public class FragmentSatu extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_fragment_satu, container, false);
        // final String[] items = new String[]{"Data 1", "Data 2", "Data 3"};
-        UserAdapter adapter = new UserAdapter(getActivity(), foods);
+        adapter = new UserAdapter(getActivity(), foods);
         listData = (ListView)rootView.findViewById(R.id.lv_data);
         listData.setAdapter(adapter);
 
         return rootView;
+    }
+    public void detailMenu(){
+        listData.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent detailPage = new Intent(getContext(), DetailMenu.class);
+                detailPage.putExtra("Menu",  adapter.getItem(position));
+                startActivity(detailPage);
+                //Toast.makeText(getContext().getApplicationContext(), getText(position), Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 }

@@ -1,0 +1,31 @@
+[
+  {
+    "namaMenu": "Ayam",
+    "dataMakanan": [
+      {
+        "nama": "Ayam Goreng",
+        "harga": 10000,
+        "des": "Ayam goreng merupakan makanan yang sering dijumpai di Indonesia, penyajian ayam goreng sangat mudah cukup dengan menggoreng ayam yang sudah dibumbui di minyak panas"
+      },
+      {
+        "nama": "Ayam Bakar",
+        "harga": 15000,
+        "des": "Ayam bakar merupakan ayam yang sudah dibumbui lalu dibakar di atas panggangan"
+      },
+      {
+        "nama": "Ayam Betutu",
+        "harga": 20000,
+        "des": "Ayam betutu merupakan makanan khas Bali yang disajikan dengan penuh rempah-rempah dari Indonesia"
+      }
+    ]
+  },
+  {
+    "namaMenu": "Mie",
+    "dataMakanan" : [
+
+    ]
+
+  },
+
+
+]
